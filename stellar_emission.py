@@ -47,6 +47,8 @@ class StellarPopData:
 
 class SB99Spectrum:
     def load(filename):
+        filename = Path(filename)
+
         self = SB99Spectrum()
         if (match := re.search(r"([0-9eE\.]+)cluster_(rot|norot)_Z([0-9]{4})_BH([0-9]+).stb99", filename.name)):
             self.data = np.genfromtxt(filename, names=["age", "lambda", "loglum_total", "loglum_stellar", "loglum_nebular"], skip_header=6)
